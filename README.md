@@ -18,7 +18,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Existing REGI store
+
+The public shop keeps REGI's established Squarespace Commerce checkout and
+fulfillment workflow. During local development, purchase and cart links use the
+current live site by default.
+
+Before moving the primary REGI domain to this application, connect the existing
+Squarespace site to a dedicated store subdomain and set:
+
+```bash
+NEXT_PUBLIC_STORE_URL=https://shop.raptoreducationgroup.org
+```
+
+This updates product, cart, and checkout handoffs without changing application
+code.
 
 ## Learn More
 
