@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# REGI website
+
+The new public website for Raptor Education Group, Inc. The application is currently operated as a non-indexable staging site and is intentionally independent of REGI's existing public domain.
 
 ## Getting Started
 
@@ -18,6 +20,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Configuration
+
+Copy `.env.example` to `.env.local` for local development. Staging and production variables are managed in Vercel.
+
+Indexing requires both `NEXT_PUBLIC_SITE_MODE=production` and `NEXT_PUBLIC_ALLOW_INDEXING=true`. This two-part switch is intentional protection against preview deployments being indexed.
+
 ## Existing REGI store
 
 The public shop keeps REGI's established Squarespace Commerce checkout and
@@ -33,6 +41,20 @@ NEXT_PUBLIC_STORE_URL=https://shop.raptoreducationgroup.org
 
 This updates product, cart, and checkout handoffs without changing application
 code.
+
+Tour registration, camp downloads, and newsletter signup use the optional environment variables documented in `.env.example`. When a value is absent, the site presents a telephone or email fallback rather than a broken or guessed link.
+
+## Quality checks
+
+```powershell
+npm.cmd run check
+```
+
+This runs linting, TypeScript validation, route verification, and a production build. The same check runs in the included GitHub Actions workflow once the repository is transferred to REGI-controlled source control.
+
+## Handover
+
+See [`docs/HANDOVER.md`](docs/HANDOVER.md) for the ownership, commerce, environment, verification, cutover, and rollback checklist.
 
 ## Learn More
 

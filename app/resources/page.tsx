@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Wildlife Resources",
+  alternates: { canonical: "/resources" },
+  openGraph: { title: "Wildlife Resources" },
+  twitter: { title: "Wildlife Resources" },
   description:
     "REGI guides and downloads for safer yards, indoor cats, healthy waterfowl, lead-free choices, volunteering, and donation drives.",
 };
@@ -11,8 +14,8 @@ const downloads = [
   { title: "Keep Cats Indoors", type: "PDF guide", href: "/resources/keep-cats-indoors.pdf", text: "Why indoor living protects both companion cats and native wildlife." },
   { title: "Don't Feed Waterfowl Bread", type: "PDF guide", href: "/resources/dont-feed-waterfowl-bread.pdf", text: "How bread can cause permanent harm and what to do instead." },
   { title: "Lead in the Environment", type: "Visual guide", href: "/resources/lead-in-the-environment.png", text: "A quick guide to choosing non-lead ammunition and fishing tackle." },
-  { title: "Volunteer Application", type: "PDF form", href: "/resources/volunteer-application.pdf", text: "Apply for a regular volunteer role at REGI." },
-  { title: "Volunteer Transporter Application", type: "PDF form", href: "/resources/volunteer-transporter-application.pdf", text: "Help native birds reach licensed care and return to the wild." },
+  { title: "Volunteer Application", type: "Printable PDF", href: "/resources/volunteer-application.pdf", text: "Apply for a regular volunteer role at REGI." },
+  { title: "Volunteer Transporter Application", type: "Printable PDF", href: "/resources/volunteer-transporter-application.pdf", text: "Help native birds reach licensed care and return to the wild." },
   { title: "Donation Drive Wish List", type: "Printable PDF", href: "/resources/donation-drive-wishlist.pdf", text: "Organize a practical supply drive for REGI's clinic and ambassadors." },
 ];
 
@@ -57,6 +60,10 @@ export default function ResourcesPage() {
               <i>↗</i>
             </a>
           ))}
+        </div>
+        <div className="shell resource-access-note">
+          <strong>Need a different format?</strong>
+          <p>Some legacy applications are designed for printing. Email <a href="mailto:volunteer@raptoreducationgroup.org?subject=Accessible%20volunteer%20application">volunteer@raptoreducationgroup.org</a> to request an accessible alternative or help completing one.</p>
         </div>
       </section>
     </main>

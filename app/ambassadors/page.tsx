@@ -5,6 +5,9 @@ import { AmbassadorDirectory } from "../components/ambassador-directory";
 
 export const metadata: Metadata = {
   title: "Avian Ambassadors",
+  alternates: { canonical: "/ambassadors" },
+  openGraph: { title: "Avian Ambassadors" },
+  twitter: { title: "Avian Ambassadors" },
   description:
     "Meet REGI's non-releasable avian ambassadors who help audiences connect with Wisconsin wildlife.",
 };

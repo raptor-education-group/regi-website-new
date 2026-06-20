@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "GivingTuesday",
+  alternates: { canonical: "/giving-tuesday" },
+  openGraph: { title: "GivingTuesday" },
+  twitter: { title: "GivingTuesday" },
   description:
     "Make REGI part of GivingTuesday through a direct gift, wish-list supplies, volunteering, symbolic adoption, or gift shop purchase.",
 };

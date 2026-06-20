@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { mailto, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Taking Flight Newsletter",
+  alternates: { canonical: "/newsletter" },
+  openGraph: { title: "Taking Flight Newsletter" },
+  twitter: { title: "Taking Flight Newsletter" },
   description:
     "Read Taking Flight, REGI's newsletter featuring rehabilitation stories, education updates, and the people helping native birds.",
 };
@@ -27,7 +31,7 @@ export default function NewsletterPage() {
             <p className="eyebrow">Current issue · Winter 2025</p>
             <h2>Thirty-five years—and still taking flight.</h2>
             <p className="page-lead">
-              This ten-page anniversary edition looks back at REGI&apos;s growth
+              This twelve-page anniversary edition looks back at REGI&apos;s growth
               while making room for the work still ahead.
             </p>
             <ul>
@@ -60,7 +64,7 @@ export default function NewsletterPage() {
               Ask the education team to add you to REGI&apos;s newsletter list.
               We&apos;ll keep it useful: new stories, events, and ways to help.
             </p>
-            <a className="button button-cream" href="mailto:education@raptoreducationgroup.org?subject=Taking%20Flight%20Newsletter%20Signup">
+            <a className="button button-cream" href={siteConfig.external.newsletterSignup || mailto(siteConfig.education.email, "Taking Flight Newsletter Signup")}>
               Join the newsletter list
             </a>
           </div>

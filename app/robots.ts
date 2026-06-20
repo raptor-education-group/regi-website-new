@@ -1,9 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://regi-website-new.vercel.app";
-
-const allowIndexing = process.env.NEXT_PUBLIC_ALLOW_INDEXING === "false";
+import { absoluteUrl, allowIndexing, siteConfig } from "./lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
   if (!allowIndexing) {
@@ -12,7 +8,8 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         disallow: "/",
       },
-      sitemap: `${siteUrl}/sitemap.xml`,
+      sitemap: absoluteUrl("/sitemap.xml"),
+      host: siteConfig.url,
     };
   }
 
@@ -21,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: siteConfig.url,
   };
 }

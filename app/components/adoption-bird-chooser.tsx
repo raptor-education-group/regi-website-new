@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ambassadors } from "../data/ambassadors";
 
 function subscribeToHash(callback: () => void) {
@@ -26,13 +26,26 @@ export function AdoptionBirdChooser({ storeHref }: { storeHref: string }) {
   const hash = useSyncExternalStore(subscribeToHash, getHash, getServerHash);
   const linkedSlug = hash.startsWith("choose-") ? hash.slice(7) : "";
   const [chosenSlug, setChosenSlug] = useState("");
+  const chooserRef = useRef<HTMLDivElement>(null);
   const selectedBird =
     ambassadors.find((bird) => bird.slug === chosenSlug) ??
     ambassadors.find((bird) => bird.slug === linkedSlug) ??
     ambassadors[0];
 
+  useEffect(() => {
+    if (!linkedSlug || !ambassadors.some((bird) => bird.slug === linkedSlug)) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.requestAnimationFrame(() => {
+      chooserRef.current?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    });
+  }, [linkedSlug]);
+
   return (
-    <div className="adoption-product-experience">
+    <div className="adoption-product-experience" id="adoption-chooser" ref={chooserRef}>
       <div className="adoption-product-visuals" aria-live="polite">
         <figure className="adoption-selected-bird">
           <Image

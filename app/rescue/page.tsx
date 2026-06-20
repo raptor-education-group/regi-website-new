@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Found an Injured Raptor?",
+  alternates: { canonical: "/rescue" },
+  openGraph: { title: "Found an Injured Raptor?" },
+  twitter: { title: "Found an Injured Raptor?" },
   description:
     "Immediate guidance for safely containing and transporting an injured eagle, hawk, owl, or other raptor to licensed care.",
 };
@@ -41,9 +46,9 @@ export default function RescuePage() {
               stress. Call REGI before transport whenever possible.
             </p>
           </div>
-          <a className="emergency-phone" href="tel:+17156234015">
-            <span>Clinic · 8 a.m.–4 p.m. daily</span>
-            715-623-4015
+          <a className="emergency-phone" href={siteConfig.clinic.phoneHref}>
+            <span>Clinic · {siteConfig.clinic.hours}</span>
+            {siteConfig.clinic.phone}
             <small>Tap to call now</small>
           </a>
         </div>
@@ -57,6 +62,13 @@ export default function RescuePage() {
             confident containing the bird, keep people and pets away, note the
             location, and call REGI for guidance or volunteer transport help.
           </p>
+        </div>
+      </section>
+
+      <section className="rescue-baby-bird-link">
+        <div className="shell rescue-warning-grid">
+          <strong>Is this a young bird?</strong>
+          <p>Many feathered fledglings on the ground are still being cared for by their parents. <Link href="/rescue/baby-birds">Check the baby-bird guide before intervening →</Link></p>
         </div>
       </section>
 
@@ -121,7 +133,7 @@ export default function RescuePage() {
               Service and Wisconsin Department of Natural Resources to provide
               specialized rehabilitation.
             </p>
-            <a className="button" href="tel:+17156234015">Call REGI now</a>
+            <a className="button" href={siteConfig.clinic.phoneHref}>Call REGI now</a>
           </div>
         </div>
       </section>

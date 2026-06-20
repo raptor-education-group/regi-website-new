@@ -364,6 +364,9 @@ button:focus-visible {
 }
 
 .emergency-inner a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   transition: color 180ms ease;
 }
 
@@ -1425,11 +1428,12 @@ button:focus-visible {
 
 .social-links a {
   display: grid;
-  width: 38px;
+  min-width: 44px;
   height: 38px;
+  padding-inline: 12px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 50%;
+  border-radius: 999px;
   color: #d0ddd4;
   font-size: 0.66rem;
   font-weight: 700;
@@ -1451,6 +1455,7 @@ button:focus-visible {
   color: #83978a;
   font-size: 0.69rem;
   letter-spacing: 0.04em;
+  flex-wrap: wrap;
 }
 
 .footer-bottom p {
@@ -1535,8 +1540,8 @@ button:focus-visible {
 
   .menu-toggle {
     display: flex;
-    width: 43px;
-    height: 43px;
+    width: 44px;
+    height: 44px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -2501,6 +2506,10 @@ button:focus-visible {
   color: var(--white);
 }
 
+.rescue-page-hero .eyebrow-light {
+  color: #fff4eb;
+}
+
 .rescue-page-hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -2556,6 +2565,19 @@ button:focus-visible {
   padding-block: 32px;
   background: var(--forest-dark);
   color: var(--white);
+}
+
+.rescue-baby-bird-link {
+  padding-block: 28px;
+  background: var(--cream);
+  color: var(--forest-dark);
+}
+
+.rescue-baby-bird-link a {
+  color: var(--copper-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .rescue-warning-grid {
@@ -6886,6 +6908,160 @@ button:focus-visible {
 }
 
 /* Final shop and ambassador interaction refinements */
+.adoption-product-experience {
+  scroll-margin-top: 120px;
+}
+
+.visit-action-row,
+.camp-action-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.camp-action-row {
+  margin-top: 34px;
+}
+
+.page-cta-grid > div:last-child .text-link {
+  display: block;
+  width: fit-content;
+  margin-top: 18px;
+}
+
+.baby-bird-hero {
+  background: var(--forest-dark);
+}
+
+.baby-bird-intro,
+.baby-bird-callout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(42px, 8vw, 120px);
+}
+
+.baby-bird-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 60px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.baby-bird-grid article {
+  padding: clamp(30px, 4vw, 54px);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.baby-bird-grid article > span,
+.baby-bird-grid small {
+  display: block;
+  color: var(--copper-dark);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.baby-bird-grid small {
+  margin-top: 42px;
+  color: #66736a;
+}
+
+.baby-bird-grid h2 {
+  margin-block: 10px 18px;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+}
+
+.baby-bird-grid p,
+.baby-bird-callout p {
+  color: #526057;
+}
+
+.baby-bird-callout {
+  background: var(--cream);
+}
+
+.baby-bird-callout-grid {
+  align-items: center;
+}
+
+.baby-bird-callout-grid .emergency-phone {
+  background: var(--copper-dark);
+}
+
+.baby-bird-callout-grid .text-link {
+  display: inline-block;
+  margin-top: 24px;
+}
+
+.policy-hero {
+  padding-block: clamp(80px, 10vw, 150px);
+  background: var(--forest-dark);
+  color: var(--white);
+}
+
+.policy-hero h1 {
+  max-width: 900px;
+  margin-block: 20px;
+  font-size: clamp(4.5rem, 10vw, 9rem);
+}
+
+.policy-hero > div > p:last-child {
+  max-width: 720px;
+  color: #d0ddd4;
+  font-size: 1.15rem;
+}
+
+.policy-copy {
+  max-width: 850px;
+}
+
+.policy-copy h2 {
+  margin: 48px 0 14px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.policy-copy h2:first-child {
+  margin-top: 0;
+}
+
+.policy-copy p {
+  color: #526057;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.policy-copy a {
+  color: var(--copper-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.resource-access-note {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: 30px;
+  margin-top: 34px;
+  padding: 28px 30px;
+  border-left: 3px solid var(--copper);
+  background: var(--cream);
+}
+
+.resource-access-note p {
+  margin: 0;
+  color: #526057;
+}
+
+.resource-access-note a {
+  color: var(--copper-dark);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 @media (max-width: 900px) {
   .ambassador-modal {
     width: min(720px, 100%);
@@ -6906,6 +7082,19 @@ button:focus-visible {
 
   .adoption-product-header,
   .adoption-product-experience {
+    grid-template-columns: 1fr;
+  }
+
+  .baby-bird-intro,
+  .baby-bird-callout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .baby-bird-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-access-note {
     grid-template-columns: 1fr;
   }
 

@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { mailto, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Education Programs",
+  alternates: { canonical: "/education" },
+  openGraph: { title: "Education Programs" },
+  twitter: { title: "Education Programs" },
   description:
     "Bring REGI wildlife educators and avian ambassadors to your classroom, club, workplace, or community event.",
 };
@@ -208,15 +212,15 @@ export default function EducationPage() {
           <div className="planning-details">
             <div><span>Audience</span><strong>Schools, scouts, clubs, churches, workplaces &amp; events</strong></div>
             <div><span>Timing</span><strong>Programs cannot begin before 9:00 a.m.</strong></div>
-            <div><span>Contact</span><strong>Education office · 715-623-2563</strong></div>
+            <div><span>Contact</span><strong>Education office · {siteConfig.education.phone}</strong></div>
             <p>
               Share your group size, ages, location, preferred dates, and what
               you are studying. REGI&apos;s education team will help shape the
               right experience.
             </p>
             <div className="planning-actions">
-              <a className="button" href="tel:+17156232563">Call education</a>
-              <a className="text-link" href="mailto:education@raptoreducationgroup.org?subject=Education%20Program%20Inquiry">
+              <a className="button" href={siteConfig.education.phoneHref}>Call education</a>
+              <a className="text-link" href={mailto(siteConfig.education.email, "Education Program Inquiry")}>
                 Start an inquiry <span aria-hidden="true">→</span>
               </a>
             </div>

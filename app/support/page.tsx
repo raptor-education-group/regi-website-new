@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Support REGI",
+  alternates: { canonical: "/support" },
+  openGraph: { title: "Support REGI" },
+  twitter: { title: "Support REGI" },
   description:
     "Donate, volunteer, or give supplies to support independent wildlife rehabilitation and education at REGI.",
 };

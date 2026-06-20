@@ -6,6 +6,9 @@ import { getStoreUrl } from "../data/store-url";
 
 export const metadata: Metadata = {
   title: "REGI Gift Shop",
+  alternates: { canonical: "/shop" },
+  openGraph: { title: "REGI Gift Shop" },
+  twitter: { title: "REGI Gift Shop" },
   description:
     "Shop REGI apparel, accessories, and symbolic bird adoptions. Every purchase directly benefits birds in REGI's care.",
 };

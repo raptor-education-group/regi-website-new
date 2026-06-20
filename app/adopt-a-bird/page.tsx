@@ -5,6 +5,9 @@ import { ambassadors } from "../data/ambassadors";
 
 export const metadata: Metadata = {
   title: "Adopt a Bird",
+  alternates: { canonical: "/adopt-a-bird" },
+  openGraph: { title: "Adopt a Bird" },
+  twitter: { title: "Adopt a Bird" },
   description:
     "Symbolically adopt one of REGI's non-releasable Avian Ambassadors and directly support their food, housing, enrichment, and medical care.",
 };

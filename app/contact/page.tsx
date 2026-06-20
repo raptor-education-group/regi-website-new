@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { directionsUrl, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Contact REGI",
+  alternates: { canonical: "/contact" },
+  openGraph: { title: "Contact REGI" },
+  twitter: { title: "Contact REGI" },
   description:
     "Contact REGI's clinic or education office, request a patient update, or find directions to the Antigo, Wisconsin facility.",
 };
@@ -43,7 +47,7 @@ export default function ContactPage() {
               so, contain the bird in a ventilated cardboard box and keep it
               quiet, dark, and warm.
             </p>
-            <a className="contact-number" href="tel:+17156234015">715-623-4015</a>
+            <a className="contact-number" href={siteConfig.clinic.phoneHref}>{siteConfig.clinic.phone}</a>
             <Link className="text-link text-link-light" href="/rescue">
               Safe handling guide <span>→</span>
             </Link>
@@ -56,10 +60,10 @@ export default function ContactPage() {
               other education questions. REGI is not generally open for
               self-guided public visits.
             </p>
-            <a className="contact-number" href="tel:+17156232563">715-623-2563</a>
+            <a className="contact-number" href={siteConfig.education.phoneHref}>{siteConfig.education.phone}</a>
             <a
               className="text-link"
-              href="mailto:education@raptoreducationgroup.org"
+              href={`mailto:${siteConfig.education.email}`}
             >
               Email education <span>→</span>
             </a>
@@ -73,9 +77,9 @@ export default function ContactPage() {
             </p>
             <a
               className="contact-email"
-              href="mailto:updates@raptoreducationgroup.org"
+              href={`mailto:${siteConfig.email.updates}`}
             >
-              updates@raptoreducationgroup.org
+              {siteConfig.email.updates}
             </a>
           </article>
         </div>
@@ -88,15 +92,16 @@ export default function ContactPage() {
             <h2>Antigo, Wisconsin</h2>
             <address>
               Raptor Education Group, Inc.<br />
-              N2160 W Rollwood Rd.<br />
-              Antigo, WI 54409
+              {siteConfig.address.street}<br />
+              {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}
             </address>
+            <a className="text-link text-link-light" href={directionsUrl}>Open directions in Google Maps <span aria-hidden="true">↗</span></a>
           </div>
           <div className="contact-detail-list">
             <div><span>Hours</span><strong>8:00 a.m.–4:00 p.m. · 7 days a week</strong></div>
-            <div><span>General education email</span><a href="mailto:education@raptoreducationgroup.org">education@raptoreducationgroup.org</a></div>
-            <div><span>Board correspondence</span><a href="mailto:board@raptoreducationgroup.org">board@raptoreducationgroup.org</a></div>
-            <div><span>Volunteer questions</span><a href="mailto:volunteer@raptoreducationgroup.org">volunteer@raptoreducationgroup.org</a></div>
+            <div><span>General education email</span><a href={`mailto:${siteConfig.education.email}`}>{siteConfig.education.email}</a></div>
+            <div><span>Board correspondence</span><a href={`mailto:${siteConfig.email.board}`}>{siteConfig.email.board}</a></div>
+            <div><span>Volunteer questions</span><a href={`mailto:${siteConfig.email.volunteer}`}>{siteConfig.email.volunteer}</a></div>
           </div>
         </div>
       </section>

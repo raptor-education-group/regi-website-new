@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Our Work & Story",
+  alternates: { canonical: "/about" },
+  openGraph: { title: "Our Work & Story" },
+  twitter: { title: "Our Work & Story" },
   description:
     "Learn how REGI has rehabilitated native birds, advanced avian care, and educated Wisconsin communities since 1990.",
 };

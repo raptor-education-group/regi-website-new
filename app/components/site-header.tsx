@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
+import { siteConfig } from "../lib/site-config";
 
 type NavItem = {
   label: string;
@@ -28,6 +29,7 @@ const navGroups: NavGroup[] = [
       { label: "Our board", href: "/board" },
       { label: "Careers", href: "/careers" },
       { label: "Found an injured bird?", href: "/rescue" },
+      { label: "Found a baby bird?", href: "/rescue/baby-birds" },
       { label: "Handling injured raptors", href: "/rescue#safe-recovery" },
     ],
   },
@@ -159,14 +161,14 @@ export function SiteHeader() {
             Found an injured bird?
           </p>
           <Link href="/rescue">
-            Get help now · <strong>715-623-4015</strong>
+            Get help now · <strong>{siteConfig.clinic.phone}</strong>
           </Link>
         </div>
       </div>
 
       <header className="site-header" ref={headerRef}>
         <div className="shell header-inner">
-          <Link className="brand" href="/" aria-label="REGI home">
+          <Link className="brand" href="/">
             <Image
               src="/images/regi-logo.png"
               alt=""
@@ -182,7 +184,9 @@ export function SiteHeader() {
 
           <nav className="desktop-nav" aria-label="Main navigation">
             {navGroups.map((group) => {
-              const isActive = group.activePaths.includes(pathname);
+              const isActive = group.activePaths.some(
+                (path) => pathname === path || pathname.startsWith(`${path}/`),
+              );
 
               return (
                 <details
@@ -225,7 +229,7 @@ export function SiteHeader() {
               )
             }
           >
-            <summary className="menu-toggle" aria-label="Open navigation">
+            <summary className="menu-toggle" aria-label="Navigation menu">
               <span />
               <span />
             </summary>

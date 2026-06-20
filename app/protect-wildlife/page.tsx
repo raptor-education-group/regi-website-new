@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Protect Wildlife at Home",
+  alternates: { canonical: "/protect-wildlife" },
+  openGraph: { title: "Protect Wildlife at Home" },
+  twitter: { title: "Protect Wildlife at Home" },
   description:
     "Practical ways to create a safer backyard for native birds through habitat, clean water, responsible feeding, and collision prevention.",
 };

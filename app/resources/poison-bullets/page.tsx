@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Lead Ammunition & Wildlife",
+  alternates: { canonical: "/resources/poison-bullets" },
+  openGraph: { title: "Lead Ammunition & Wildlife" },
+  twitter: { title: "Lead Ammunition & Wildlife" },
   description:
     "Understand how lead ammunition fragments poison eagles and other scavengers—and how voluntary lead-free choices protect wildlife.",
 };
@@ -38,7 +41,7 @@ export default function PoisonBulletsPage() {
             <h2>A voluntary solution</h2>
             <p>Non-lead ammunition and fishing tackle prevent exposure at the source. Hunters and anglers can protect the wildlife that shares the landscape without stepping away from their traditions.</p>
             <div className="article-actions">
-              <a className="button" href="https://www.sportingleadfree.org/the-why">Explore Sporting Lead Free <span>↗</span></a>
+              <a className="button" href="https://www.sportingleadfree.org/the-why-overview">Explore Sporting Lead Free <span>↗</span></a>
               <Link className="text-link" href="/resources">Back to resources <span>→</span></Link>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { getStoreUrl } from "../data/store-url";
 
 export const metadata: Metadata = {
   title: "Your Cart",
+  robots: { index: false, follow: false },
   description: "Continue to REGI's secure online store to review your cart and complete checkout.",
 };
 

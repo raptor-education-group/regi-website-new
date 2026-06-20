@@ -3,6 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Our Board",
+  alternates: { canonical: "/board" },
+  openGraph: { title: "Our Board" },
+  twitter: { title: "Our Board" },
   description:
     "Meet the volunteer Board of Directors providing governance, guidance, and support for Raptor Education Group, Inc.",
 };

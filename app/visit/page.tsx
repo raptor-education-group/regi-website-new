@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { mailto, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Visit REGI",
+  alternates: { canonical: "/visit" },
+  openGraph: { title: "Visit REGI" },
+  twitter: { title: "Visit REGI" },
   description:
     "Plan a seasonal Raptor Tour or Raptor Adventures Summer Camp experience at REGI in Antigo, Wisconsin.",
 };
 
 export default function VisitPage() {
+  const { tourBooking, campRegistration, campThemes } = siteConfig.external;
+
   return (
     <main id="main-content">
       <section className="inner-hero visit-hero">
@@ -60,7 +66,10 @@ export default function VisitPage() {
         <div className="shell visit-notice">
           <p><strong>Dress for the weather.</strong> Tours are outdoors and subject to conditions.</p>
           <p><strong>Please leave pets at home.</strong> Dogs are not allowed on REGI property.</p>
-          <a className="button" href="tel:+17156232563">Call 715-623-2563</a>
+          <div className="visit-action-row">
+            {tourBooking ? <a className="button" href={tourBooking}>Register for a tour <span aria-hidden="true">↗</span></a> : null}
+            <a className={tourBooking ? "text-link" : "button"} href={siteConfig.education.phoneHref}>Call {siteConfig.education.phone}</a>
+          </div>
         </div>
       </section>
 
@@ -99,6 +108,12 @@ export default function VisitPage() {
           <article><span>Session 02</span><h3>Ages 10–13</h3><p>August 3–7, 2026</p></article>
           <div className="camp-scholarship"><strong>Scholarships are available.</strong><p>Call the education office to learn more or request a registration form.</p></div>
         </div>
+        {(campRegistration || campThemes) ? (
+          <div className="shell camp-action-row" aria-label="Summer camp downloads">
+            {campRegistration ? <a className="button" href={campRegistration}>Registration form <span aria-hidden="true">↗</span></a> : null}
+            {campThemes ? <a className="text-link" href={campThemes}>Explore 2026 camp themes <span aria-hidden="true">↗</span></a> : null}
+          </div>
+        ) : null}
         <div className="shell camp-gallery">
           <figure><Image src="/images/summer-camp.jpg" alt="A group of REGI summer campers" fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>
           <figure><Image src="/images/camp-exploration.jpg" alt="REGI campers exploring wildlife and nature" fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>
@@ -110,7 +125,8 @@ export default function VisitPage() {
           <p className="eyebrow eyebrow-light">Ready for an adventure?</p>
           <h2>Make REGI part of your Wisconsin summer.</h2>
           <div>
-            <a className="button button-cream" href="tel:+17156232563">Call the education office</a>
+            <a className="button button-cream" href={siteConfig.education.phoneHref}>Call the education office</a>
+            <a className="text-link text-link-light" href={mailto(siteConfig.education.email, "Tour or summer camp inquiry")}>Email the education team</a>
             <p>For tour registration, camp details, or groups larger than ten.</p>
           </div>
         </div>

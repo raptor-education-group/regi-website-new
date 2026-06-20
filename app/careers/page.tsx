@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Careers & Internships",
+  alternates: { canonical: "/careers" },
+  openGraph: { title: "Careers & Internships" },
+  twitter: { title: "Careers & Internships" },
   description:
     "Explore career and summer internship opportunities in avian rehabilitation and wildlife education at REGI.",
 };

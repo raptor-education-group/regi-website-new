@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Make a Difference",
+  alternates: { canonical: "/make-a-difference" },
+  openGraph: { title: "Make a Difference" },
+  twitter: { title: "Make a Difference" },
   description:
     "Volunteer, intern, choose lead-free alternatives, and use practical conservation resources to help native birds and REGI.",
 };
@@ -99,7 +103,7 @@ export default function MakeADifferencePage() {
             <div className="volunteer-facts">
               <p><span>Age</span><strong>18 years or older</strong></p>
               <p><span>Best fit</span><strong>A regular, reliable schedule</strong></p>
-              <p><span>Questions</span><a href="mailto:volunteer@raptoreducationgroup.org">volunteer@raptoreducationgroup.org</a></p>
+              <p><span>Questions</span><a href={`mailto:${siteConfig.email.volunteer}`}>{siteConfig.email.volunteer}</a></p>
             </div>
             <div className="inline-actions">
               <a className="button" href="/resources/volunteer-application.pdf">
@@ -129,7 +133,7 @@ export default function MakeADifferencePage() {
               a direct, practical act of conservation.
             </p>
             <div className="lead-resource-links">
-              <a href="https://www.sportingleadfree.org/the-why">Sporting Lead Free <span>↗</span></a>
+              <a href="https://www.sportingleadfree.org/the-why-overview">Sporting Lead Free <span>↗</span></a>
               <a href="/resources/lead-in-the-environment.png">Lead in the Environment guide <span>↗</span></a>
               <Link href="/resources/poison-bullets">Lead ammunition &amp; wildlife <span>→</span></Link>
             </div>

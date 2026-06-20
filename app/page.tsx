@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AmbassadorSpotlight } from "./components/ambassador-spotlight";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { title: "Raptor Education Group, Inc." },
+  twitter: { title: "Raptor Education Group, Inc." },
+};
 
 const programCards = [
   {

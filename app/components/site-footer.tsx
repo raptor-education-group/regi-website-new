@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { siteConfig } from "../lib/site-config";
 
 export function SiteFooter() {
   return (
@@ -13,8 +14,8 @@ export function SiteFooter() {
             visiting REGI during our Raptor Tour season.
           </p>
           <div>
-            <a href="tel:+17156234015">Clinic · 715-623-4015</a>
-            <a href="tel:+17156232563">Education · 715-623-2563</a>
+            <a href={siteConfig.clinic.phoneHref}>Clinic · {siteConfig.clinic.phone}</a>
+            <a href={siteConfig.education.phoneHref}>Education · {siteConfig.education.phone}</a>
           </div>
         </div>
       </div>
@@ -49,16 +50,17 @@ export function SiteFooter() {
           <Link href="/shop">Gift shop</Link>
           <Link href="/resources">Wildlife resources</Link>
           <Link href="/rescue">Injured bird help</Link>
+          <Link href="/rescue/baby-birds">Baby bird help</Link>
           <Link href="/contact">Contact us</Link>
         </div>
         <div>
           <h2>Contact</h2>
-          <a href="mailto:education@raptoreducationgroup.org">
-            education@raptoreducationgroup.org
+          <a href={`mailto:${siteConfig.education.email}`}>
+            {siteConfig.education.email}
           </a>
           <address>
-            N2160 W Rollwood Rd.<br />
-            Antigo, WI 54409
+            {siteConfig.address.street}<br />
+            {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}
           </address>
           <p>
             Open 8:00 a.m.–4:00 p.m.
@@ -66,16 +68,14 @@ export function SiteFooter() {
           </p>
           <div className="social-links">
             <a
-              href="https://www.facebook.com/RaptorEducationGroupInc"
-              aria-label="REGI on Facebook"
+              href={siteConfig.social.facebook}
             >
-              FB
+              Facebook
             </a>
             <a
-              href="https://www.instagram.com/raptoreducationgroup/"
-              aria-label="REGI on Instagram"
+              href={siteConfig.social.instagram}
             >
-              IG
+              Instagram
             </a>
           </div>
         </div>
@@ -83,6 +83,8 @@ export function SiteFooter() {
       <div className="shell footer-bottom">
         <p>© {new Date().getFullYear()} Raptor Education Group, Inc.</p>
         <p>501(c)(3) nonprofit · Antigo, Wisconsin</p>
+        <Link href="/privacy">Privacy</Link>
+        <Link href="/accessibility">Accessibility</Link>
         <Link href="/support">Help a bird today →</Link>
       </div>
     </footer>

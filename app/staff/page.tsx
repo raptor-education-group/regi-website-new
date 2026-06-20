@@ -4,6 +4,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Meet the Staff",
+  alternates: { canonical: "/staff" },
+  openGraph: { title: "Meet the Staff" },
+  twitter: { title: "Meet the Staff" },
   description:
     "Meet the rehabilitation and education professionals who care for REGI's patients, ambassadors, and community programs.",
 };

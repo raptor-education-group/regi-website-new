@@ -1,29 +1,19 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://regi-website-new.vercel.app";
-
-const routes = [
-  "",
-  "/about",
-  "/adoption",
-  "/ambassadors",
-  "/camp",
-  "/contact",
-  "/education",
-  "/make-a-difference",
-  "/newsletter",
-  "/rescue",
-  "/shop",
-  "/support",
-  "/volunteer",
-];
+import { shopProducts } from "./data/shop-products";
+import { absoluteUrl } from "./lib/site-config";
+import { publicRoutes } from "./lib/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${siteUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: route === "" ? 1 : 0.7,
-  }));
+  return [
+    ...publicRoutes.map((route) => ({
+      url: absoluteUrl(route.path),
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    })),
+    ...shopProducts.map((product) => ({
+      url: absoluteUrl(`/shop/${product.slug}`),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+  ];
 }

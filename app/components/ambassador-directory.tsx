@@ -26,16 +26,37 @@ export function AmbassadorDirectory() {
   const hash = useSyncExternalStore(subscribeToHash, getHash, getServerHash);
   const activeBird = ambassadors.find((bird) => hash === `bird-${bird.slug}`);
   const closeRef = useRef<HTMLAnchorElement>(null);
+  const dialogRef = useRef<HTMLElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!activeBird) return;
 
+    openerRef.current = document.activeElement as HTMLElement | null;
     document.body.classList.add("ambassador-modal-open");
     closeRef.current?.focus();
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         window.location.hash = "ambassador-directory";
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        if (!focusable?.length) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     }
 
@@ -43,6 +64,7 @@ export function AmbassadorDirectory() {
     return () => {
       document.body.classList.remove("ambassador-modal-open");
       window.removeEventListener("keydown", handleKeyDown);
+      openerRef.current?.focus();
     };
   }, [activeBird]);
 
@@ -82,6 +104,7 @@ export function AmbassadorDirectory() {
             aria-label="Close ambassador story"
           />
           <section
+            ref={dialogRef}
             className="ambassador-modal"
             role="dialog"
             aria-modal="true"

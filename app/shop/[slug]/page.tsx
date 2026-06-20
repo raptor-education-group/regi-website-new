@@ -15,7 +15,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = getShopProduct((await params).slug);
   if (!product) return {};
-  return { title: product.name, description: product.description };
+  return {
+    title: product.name,
+    description: product.description,
+    alternates: { canonical: `/shop/${product.slug}` },
+    openGraph: { title: product.name, description: product.description },
+    twitter: { title: product.name, description: product.description },
+  };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
