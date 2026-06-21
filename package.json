@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "verify:routes": "node scripts/verify-routes.mjs",
     "verify:runtime": "node scripts/smoke-runtime.mjs",
+    "verify:csp:dev": "node scripts/smoke-dev-csp.mjs",
     "check": "npm run build"
   },
   "dependencies": {

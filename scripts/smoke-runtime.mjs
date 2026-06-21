@@ -36,8 +36,12 @@ async function expectPage(path) {
   const response = await fetch(`${origin}${path}`, { redirect: "manual" });
   if (response.status !== 200) throw new Error(`${path} returned ${response.status}`);
   const robotsHeader = response.headers.get("x-robots-tag");
-  if (!response.headers.get("content-security-policy")) {
+  const contentSecurityPolicy = response.headers.get("content-security-policy");
+  if (!contentSecurityPolicy) {
     throw new Error(`${path} is missing the Content-Security-Policy header`);
+  }
+  if (contentSecurityPolicy.includes("'unsafe-eval'")) {
+    throw new Error(`${path} allows unsafe-eval in the production build`);
   }
   if (response.headers.get("x-content-type-options") !== "nosniff") {
     throw new Error(`${path} is missing the nosniff header`);
@@ -83,6 +87,15 @@ try {
   }
   if (/\/adoption<\/loc>|\/camp<\/loc>|\/volunteer<\/loc>/.test(contents.get("/sitemap.xml"))) {
     throw new Error("Sitemap contains obsolete routes");
+  }
+  if (!contents.get("/rescue/songbirds").includes("Small bird. Small box.")) {
+    throw new Error("Songbird transport guidance is missing");
+  }
+  if (!contents.get("/careers").includes("internship-application")) {
+    throw new Error("Internship application form is missing");
+  }
+  if (!home.includes("data-newsletter-open")) {
+    throw new Error("Persistent newsletter trigger is missing");
   }
 
   const redirects = [

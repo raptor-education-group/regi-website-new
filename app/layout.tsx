@@ -3,6 +3,7 @@ import { ViewTransition } from "react";
 import { ScrollReveal } from "./components/scroll-reveal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
+import { NewsletterModal } from "./components/newsletter-modal";
 import { absoluteUrl, allowIndexing, siteConfig } from "./lib/site-config";
 import "./globals.css";
 
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
     "raptor education",
     "Antigo Wisconsin",
     "injured bird help",
+    "injured songbird help",
   ],
   openGraph: {
     title: "Raptor Education Group, Inc.",
@@ -86,6 +88,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
+        <NewsletterModal />
         <ScrollReveal />
         <ViewTransition name="route-content" default="route-soften">
           {children}

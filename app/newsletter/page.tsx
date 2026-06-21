@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { mailto, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Taking Flight Newsletter",
@@ -64,9 +63,9 @@ export default function NewsletterPage() {
               Ask the education team to add you to REGI&apos;s newsletter list.
               We&apos;ll keep it useful: new stories, events, and ways to help.
             </p>
-            <a className="button button-cream" href={siteConfig.external.newsletterSignup || mailto(siteConfig.education.email, "Taking Flight Newsletter Signup")}>
+            <button className="button button-cream" type="button" data-newsletter-open>
               Join the newsletter list
-            </a>
+            </button>
           </div>
         </div>
       </section>

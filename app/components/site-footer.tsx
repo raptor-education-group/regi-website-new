@@ -5,6 +5,18 @@ import { siteConfig } from "../lib/site-config";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
+      <div className="footer-newsletter">
+        <div className="shell footer-newsletter-inner">
+          <div>
+            <p className="eyebrow eyebrow-light">Taking Flight newsletter</p>
+            <h2>Stories worth opening your inbox for.</h2>
+          </div>
+          <div>
+            <p>Patient journeys, releases, education news, events, and thoughtful ways to help native birds.</p>
+            <button className="button button-cream" type="button" data-newsletter-open>Join the newsletter</button>
+          </div>
+        </div>
+      </div>
       <div className="footer-visit-notice">
         <div className="shell footer-visit-notice-inner">
           <p className="eyebrow eyebrow-light">Before you visit</p>
@@ -50,6 +62,7 @@ export function SiteFooter() {
           <Link href="/shop">Gift shop</Link>
           <Link href="/resources">Wildlife resources</Link>
           <Link href="/rescue">Injured bird help</Link>
+          <Link href="/rescue/songbirds">Songbird rescue</Link>
           <Link href="/rescue/baby-birds">Baby bird help</Link>
           <Link href="/contact">Contact us</Link>
         </div>

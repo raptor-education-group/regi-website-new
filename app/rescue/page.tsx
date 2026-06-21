@@ -67,8 +67,8 @@ export default function RescuePage() {
 
       <section className="rescue-baby-bird-link">
         <div className="shell rescue-warning-grid">
-          <strong>Is this a young bird?</strong>
-          <p>Many feathered fledglings on the ground are still being cared for by their parents. <Link href="/rescue/baby-birds">Check the baby-bird guide before intervening →</Link></p>
+          <strong>Not a raptor?</strong>
+          <p><Link href="/rescue/songbirds">Use the songbird capture and transport guide →</Link> If this is a young bird, <Link href="/rescue/baby-birds">check the baby-bird guide before intervening →</Link></p>
         </div>
       </section>
 

@@ -14,6 +14,7 @@ export const publicRoutes: PublicRoute[] = [
   { path: "/careers", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.8 },
   { path: "/rescue", changeFrequency: "yearly", priority: 1 },
+  { path: "/rescue/songbirds", changeFrequency: "yearly", priority: 0.9 },
   { path: "/rescue/baby-birds", changeFrequency: "yearly", priority: 0.9 },
   { path: "/education", changeFrequency: "monthly", priority: 0.8 },
   { path: "/visit", changeFrequency: "monthly", priority: 0.8 },

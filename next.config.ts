@@ -4,6 +4,7 @@ import { legacyRedirects } from "./app/lib/legacy-redirects";
 const allowIndexing =
   process.env.NEXT_PUBLIC_SITE_MODE === "production" &&
   process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
+const isDevelopment = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -22,12 +23,12 @@ const nextConfig: NextConfig = {
           "form-action 'self'",
           "frame-ancestors 'self'",
           "object-src 'none'",
-          "script-src 'self' 'unsafe-inline'",
+          `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
           "style-src 'self' 'unsafe-inline'",
           "img-src 'self' data: blob:",
           "font-src 'self' data:",
-          "connect-src 'self' https://vitals.vercel-insights.com",
-          "upgrade-insecure-requests",
+          `connect-src 'self' https://vitals.vercel-insights.com${isDevelopment ? " ws: wss:" : ""}`,
+          ...(isDevelopment ? [] : ["upgrade-insecure-requests"]),
         ].join("; "),
       },
       { key: "X-Content-Type-Options", value: "nosniff" },

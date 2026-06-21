@@ -18,6 +18,8 @@ export default function PrivacyPage() {
         <p>Donation, store, newsletter, and registration links may take you to a third-party service. That provider processes the information you submit under its own privacy practices. REGI does not receive payment-card details through this website.</p>
         <h2>Technical information</h2>
         <p>The website host may process routine request information needed to deliver and protect the site. If REGI adds audience measurement in the future, this statement should be updated to identify the service and its purpose.</p>
+        <h2>Information saved on your device</h2>
+        <p>The newsletter prompt remembers when it was dismissed so it does not appear repeatedly. The internship application can save an unfinished draft in your browser until you clear it or prepare the application email. This information stays on that device and is not sent to REGI by the website.</p>
         <h2>Questions</h2>
         <p>Email <a href={`mailto:${siteConfig.education.email}`}>{siteConfig.education.email}</a> with privacy questions or requests concerning information shared with REGI.</p>
         <p><small>Last reviewed June 20, 2026. REGI should review this statement whenever forms, analytics, or service providers change.</small></p>
