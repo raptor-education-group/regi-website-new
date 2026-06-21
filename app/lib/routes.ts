@@ -31,4 +31,5 @@ export const publicRoutes: PublicRoute[] = [
   { path: "/giving-tuesday", changeFrequency: "yearly", priority: 0.5 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.3 },
   { path: "/accessibility", changeFrequency: "yearly", priority: 0.3 },
+  { path: "/site-map", changeFrequency: "yearly", priority: 0.4 },
 ];

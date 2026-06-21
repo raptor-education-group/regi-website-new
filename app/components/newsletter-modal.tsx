@@ -1,7 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
-import { siteConfig } from "../lib/site-config";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const DISMISSED_KEY = "regi-newsletter-prompt-dismissed";
 const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
@@ -10,7 +9,6 @@ export function NewsletterModal() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const dialogRef = useRef<HTMLElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
 
   const openModal = useCallback((opener?: HTMLElement | null) => {
@@ -66,7 +64,27 @@ export function NewsletterModal() {
     if (!open) return;
 
     document.body.classList.add("newsletter-modal-open");
-    emailRef.current?.focus();
+
+    const focusSignup = () => {
+      const emailInput = dialogRef.current?.querySelector<HTMLInputElement>('input[type="email"]');
+      if (!emailInput) return false;
+      if (email) {
+        emailInput.value = email;
+        emailInput.dispatchEvent(new Event("input", { bubbles: true }));
+        emailInput.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+      emailInput.focus();
+      return true;
+    };
+
+    const observer = new MutationObserver(() => {
+      if (focusSignup()) observer.disconnect();
+    });
+    const dialog = dialogRef.current;
+    if (!focusSignup() && dialog) {
+      observer.observe(dialog, { childList: true, subtree: true });
+      dialog.querySelector<HTMLElement>(".newsletter-modal-close")?.focus();
+    }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -93,26 +111,14 @@ export function NewsletterModal() {
     window.addEventListener("keydown", handleKeyDown);
     return () => {
       document.body.classList.remove("newsletter-modal-open");
+      observer.disconnect();
       window.removeEventListener("keydown", handleKeyDown);
       openerRef.current?.focus();
     };
-  }, [closeModal, open]);
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const subject = encodeURIComponent("Taking Flight Newsletter Signup");
-    const body = encodeURIComponent(
-      `Please add ${email} to the Taking Flight newsletter list.`,
-    );
-    localStorage.setItem(DISMISSED_KEY, String(Date.now()));
-    window.location.href = `mailto:${siteConfig.education.email}?subject=${subject}&body=${body}`;
-    setOpen(false);
-  }
-
-  if (!open) return null;
+  }, [closeModal, email, open]);
 
   return (
-    <div className="newsletter-modal-layer">
+    <div className="newsletter-modal-layer" hidden={!open}>
       <button
         className="newsletter-modal-backdrop"
         type="button"
@@ -146,32 +152,16 @@ export function NewsletterModal() {
             Receive new patient stories, releases, education updates, events,
             and practical ways to help Wisconsin&apos;s native birds.
           </p>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="newsletter-email">Email address</label>
-            <div>
-              <input
-                ref={emailRef}
-                id="newsletter-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                placeholder="you@example.com"
-                value={email}
-                onChange={(event) => setEmail(event.target.value)}
-                required
-              />
-              <button className="button" type="submit">Join the list</button>
-            </div>
-          </form>
+          <div className="constant-contact-widget">
+            <div
+              className="ctct-inline-form"
+              data-form-id="a90c6e6d-2a42-460a-869a-601dd3e0f8be"
+            />
+          </div>
           <small>
-            Until REGI&apos;s automated mailing connection is enabled, this opens a
-            pre-addressed email request. No address is stored by this website.
+            Newsletter subscriptions are securely processed by Constant Contact.
+            You can unsubscribe at any time using the link in any newsletter.
           </small>
-          {siteConfig.external.newsletterSignup ? (
-            <a className="text-link" href={siteConfig.external.newsletterSignup}>
-              Use REGI&apos;s mailing-list form <span aria-hidden="true">↗</span>
-            </a>
-          ) : null}
         </div>
       </section>
     </div>

@@ -19,6 +19,21 @@ const downloads = [
   { title: "Donation Drive Wish List", type: "Printable PDF", href: "/resources/donation-drive-wishlist.pdf", text: "Organize a practical supply drive for REGI's clinic and ambassadors." },
 ];
 
+const externalReferences = [
+  {
+    title: "Dr. Hines' Wildlife Rehabilitation Guides",
+    type: "External veterinary reference",
+    href: "https://vetspace.2ndchance.info/all-of-dr-hines-guides-to-wildlife-rehabilitation/",
+    text: "A broad collection of freely available wildlife rehabilitation articles compiled by veterinarian Ronald Hines.",
+  },
+  {
+    title: "Baby Songbird Growth Charts",
+    type: "External veterinary reference",
+    href: "https://vetspace.2ndchance.info/growth-charts-for-baby-north-american-song-birds/",
+    text: "Species-specific photo and growth references that may help with age estimation and identification.",
+  },
+];
+
 export default function ResourcesPage() {
   return (
     <main id="main-content">
@@ -65,6 +80,34 @@ export default function ResourcesPage() {
           <strong>Need a different format?</strong>
           <p>Some legacy applications are designed for printing. Email <a href="mailto:volunteer@raptoreducationgroup.org?subject=Accessible%20volunteer%20application">volunteer@raptoreducationgroup.org</a> to request an accessible alternative or help completing one.</p>
         </div>
+      </section>
+
+      <section className="section external-reference-section">
+        <div className="shell external-reference-heading">
+          <div>
+            <p className="eyebrow">Further reading</p>
+            <h2>Independent wildlife references.</h2>
+          </div>
+          <p>
+            These outside resources can support learning and identification,
+            but they do not replace instructions from REGI or another licensed
+            wildlife rehabilitator.
+          </p>
+        </div>
+        <div className="shell external-reference-grid">
+          {externalReferences.map((resource) => (
+            <a href={resource.href} key={resource.href} rel="noreferrer" target="_blank">
+              <small>{resource.type}</small>
+              <h3>{resource.title}</h3>
+              <p>{resource.text}</p>
+              <span>Visit the reference <i aria-hidden="true">↗</i></span>
+            </a>
+          ))}
+        </div>
+        <p className="shell external-reference-credit">
+          External articles and charts remain the work of their respective
+          author and publisher and are linked here with attribution.
+        </p>
       </section>
     </main>
   );

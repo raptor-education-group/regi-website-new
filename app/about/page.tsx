@@ -137,13 +137,16 @@ export default function AboutPage() {
         <div className="shell credentials-grid">
           <div><strong>800–1,000+</strong><span>patients annually</span></div>
           <div><strong>35+</strong><span>years serving wildlife</span></div>
-          <div><strong>State + federal</strong><span>rehabilitation permits</span></div>
+          <div className="candid-credential"><strong>Platinum</strong><span>2026 Candid Seal of Transparency</span></div>
+          <div><strong>USFWS</strong><span>federal rehabilitation permits</span></div>
+          <div><strong>Wisconsin DNR</strong><span>state rehabilitation license</span></div>
           <div><strong>501(c)(3)</strong><span>independent nonprofit</span></div>
         </div>
         <div className="shell credentials-copy">
           <p>
-            REGI holds permits from the State of Wisconsin and U.S. Fish and
-            Wildlife Service and participates in professional communities
+            REGI holds permits from the Wisconsin Department of Natural
+            Resources and U.S. Fish and Wildlife Service. REGI earned Candid&apos;s
+            2026 Platinum Seal of Transparency and participates in professional communities
             including the International Wildlife Rehabilitation Council,
             National Wildlife Rehabilitators Association, Raptor Research
             Foundation, and American Society of Ornithology.

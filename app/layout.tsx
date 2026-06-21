@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ViewTransition } from "react";
+import Script from "next/script";
 import { ScrollReveal } from "./components/scroll-reveal";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -94,6 +95,14 @@ export default function RootLayout({
           {children}
         </ViewTransition>
         <SiteFooter />
+        <Script id="constant-contact-account" strategy="afterInteractive">
+          {`window._ctct_m = "37cda874527e1b53a1bdfe1997ead73e";`}
+        </Script>
+        <Script
+          id="signupScript"
+          src="https://static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

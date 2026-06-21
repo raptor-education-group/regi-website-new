@@ -64,6 +64,27 @@ export default function BabyBirdsPage() {
             </article>
           ))}
         </div>
+        <aside className="shell baby-bird-reference">
+          <div>
+            <p className="eyebrow">Age &amp; identification reference</p>
+            <h2>Compare carefully. Never feed by guesswork.</h2>
+          </div>
+          <div>
+            <p>
+              Veterinarian Ronald Hines publishes external growth charts for
+              baby North American songbirds. Use them as a visual reference
+              only, then call REGI before feeding, treating, or relocating a bird.
+            </p>
+            <a
+              className="text-link"
+              href="https://vetspace.2ndchance.info/growth-charts-for-baby-north-american-song-birds/"
+              rel="noreferrer"
+              target="_blank"
+            >
+              View the external growth charts <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </aside>
       </section>
 
       <section className="rescue-warning">

@@ -79,7 +79,7 @@ export default function ContactPage() {
       </section>
 
       <section className="section contact-inquiry-section" id="contact-inquiry">
-        <div className="shell">
+        <div className="shell contact-inquiry-shell">
           <ContactInquiryForm />
         </div>
       </section>

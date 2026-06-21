@@ -15,6 +15,11 @@ const board = [
   { name: "Steve Fisher", role: "Vice President" },
   { name: "Megan Ackley", role: "Board Secretary" },
   { name: "Carrie Asplund", role: "Treasurer" },
+  {
+    name: "Katelynn Helland",
+    role: "Director-at-Large",
+    focus: "Wildlife Rehabilitation Liaison",
+  },
 ];
 
 export default function BoardPage() {
@@ -54,6 +59,7 @@ export default function BoardPage() {
               <span>0{index + 1}</span>
               <p>{member.role}</p>
               <h2>{member.name}</h2>
+              {member.focus ? <strong>{member.focus}</strong> : null}
             </article>
           ))}
         </div>

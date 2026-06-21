@@ -29,6 +29,8 @@ const staggerSelectors = [
   ".related-products-grid",
   ".resource-download-list",
   ".resource-list",
+  ".external-reference-grid",
+  ".site-map-grid",
   ".difference-pathway-grid",
   ".staff-grid",
   ".board-grid",

@@ -109,6 +109,18 @@ try {
   if (!home.includes('id="footer-newsletter-email"')) {
     throw new Error("Footer newsletter signup is missing");
   }
+  if (!home.includes("a90c6e6d-2a42-460a-869a-601dd3e0f8be")) {
+    throw new Error("Constant Contact newsletter widget is missing");
+  }
+  if (!contents.get("/site-map").includes("Looking for something specific?")) {
+    throw new Error("Site map navigation page is missing");
+  }
+  if (!home.includes("nav-disclosure")) {
+    throw new Error("Desktop dropdown navigation is missing");
+  }
+  if (!contents.get("/board").includes("Katelynn Helland")) {
+    throw new Error("Katelynn Helland is missing from the board page");
+  }
 
   const redirects = [
     ["/what-to-do-if-you-find-a-baby-bird", "/rescue/baby-birds"],

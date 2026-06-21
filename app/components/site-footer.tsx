@@ -88,6 +88,11 @@ export function SiteFooter() {
               Instagram
             </a>
           </div>
+          <div className="footer-candid-seal" aria-label="2026 Candid Platinum Seal of Transparency">
+            <span>Platinum Transparency</span>
+            <strong>2026</strong>
+            <small>Candid.</small>
+          </div>
         </div>
       </div>
       <div className="shell footer-bottom">
@@ -95,6 +100,7 @@ export function SiteFooter() {
         <p>501(c)(3) nonprofit · Antigo, Wisconsin</p>
         <Link href="/privacy">Privacy</Link>
         <Link href="/accessibility">Accessibility</Link>
+        <Link href="/site-map">Site map</Link>
         <Link href="/support">Help a bird today →</Link>
       </div>
     </footer>
