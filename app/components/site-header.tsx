@@ -22,31 +22,48 @@ const navGroups: NavGroup[] = [
   {
     label: "About",
     href: "/about",
-    activePaths: ["/about", "/staff", "/board", "/careers", "/rescue"],
+    activePaths: ["/about", "/staff", "/board", "/careers"],
     items: [
       { label: "About REGI", href: "/about" },
       { label: "Meet the staff", href: "/staff" },
       { label: "Our board", href: "/board" },
       { label: "Careers & internships", href: "/careers" },
-      { label: "Found an injured bird?", href: "/rescue" },
+    ],
+  },
+  {
+    label: "Bird Assistance",
+    href: "/rescue",
+    activePaths: ["/rescue"],
+    items: [
+      { label: "Injured bird help", href: "/rescue" },
+      { label: "Handling injured raptors", href: "/rescue#safe-recovery" },
       { label: "Injured songbird help", href: "/rescue/songbirds" },
       { label: "Found a baby bird?", href: "/rescue/baby-birds" },
-      { label: "Handling injured raptors", href: "/rescue#safe-recovery" },
     ],
   },
   {
     label: "Education",
     href: "/education",
-    activePaths: ["/education", "/visit", "/ambassadors", "/newsletter"],
+    activePaths: ["/education", "/ambassadors", "/newsletter"],
     items: [
+      { label: "Education at REGI", href: "/education" },
       { label: "Raptor programs", href: "/education#programs" },
-      { label: "Raptor tours", href: "/visit#raptor-tours" },
       { label: "Avian ambassadors", href: "/ambassadors" },
-      { label: "Raptor Adventure summer camp", href: "/visit#summer-camp" },
       {
         label: "Newsletter",
         href: "/newsletter",
       },
+    ],
+  },
+  {
+    label: "Visit REGI",
+    href: "/visit",
+    activePaths: ["/visit", "/summer-camp"],
+    items: [
+      { label: "Plan your visit", href: "/visit" },
+      { label: "Seasonal Raptor Tours", href: "/visit#raptor-tours" },
+      { label: "Owl-O-Ween Tours", href: "/visit#owl-o-ween" },
+      { label: "Raptor Adventures Summer Camp", href: "/summer-camp" },
     ],
   },
   {
@@ -129,7 +146,7 @@ export function SiteHeader() {
       }
 
       headerRef.current
-        .querySelectorAll<HTMLDetailsElement>(".nav-group[open]")
+        .querySelectorAll<HTMLDetailsElement>(".nav-disclosure[open]")
         .forEach((menu) => {
           if (!menu.contains(target)) menu.removeAttribute("open");
         });
@@ -139,7 +156,7 @@ export function SiteHeader() {
       if (event.key !== "Escape") return;
       closeMenus();
       headerRef.current
-        ?.querySelector<HTMLElement>(".nav-group summary, .menu-toggle")
+        ?.querySelector<HTMLElement>(".nav-disclosure summary, .menu-toggle")
         ?.focus();
     }
 
@@ -190,22 +207,23 @@ export function SiteHeader() {
               );
 
               return (
-                <details
+                <div
                   className={`nav-group${isActive ? " active" : ""}`}
                   key={group.label}
-                  name="main-navigation"
                 >
-                  <summary>
-                    {group.label}
-                    <span aria-hidden="true">+</span>
-                  </summary>
-                  <div className="nav-dropdown">
-                    <p>{group.label}</p>
-                    {group.items.map((item) => (
-                      <NavLink item={item} key={item.href + item.label} />
-                    ))}
-                  </div>
-                </details>
+                  <Link className="nav-group-link" href={group.href}>{group.label}</Link>
+                  <details className="nav-disclosure" name="main-navigation">
+                    <summary aria-label={`Open ${group.label} menu`}>
+                      <span aria-hidden="true">+</span>
+                    </summary>
+                    <div className="nav-dropdown">
+                      <p>{group.label}</p>
+                      {group.items.map((item) => (
+                        <NavLink item={item} key={item.href + item.label} />
+                      ))}
+                    </div>
+                  </details>
+                </div>
               );
             })}
           </nav>

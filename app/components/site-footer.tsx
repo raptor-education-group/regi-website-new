@@ -1,22 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "../lib/site-config";
+import { NewsletterFooterForm } from "./newsletter-footer-form";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <div className="footer-newsletter">
-        <div className="shell footer-newsletter-inner">
-          <div>
-            <p className="eyebrow eyebrow-light">Taking Flight newsletter</p>
-            <h2>Stories worth opening your inbox for.</h2>
-          </div>
-          <div>
-            <p>Patient journeys, releases, education news, events, and thoughtful ways to help native birds.</p>
-            <button className="button button-cream" type="button" data-newsletter-open>Join the newsletter</button>
-          </div>
-        </div>
-      </div>
       <div className="footer-visit-notice">
         <div className="shell footer-visit-notice-inner">
           <p className="eyebrow eyebrow-light">Before you visit</p>
@@ -33,6 +22,13 @@ export function SiteFooter() {
       </div>
 
       <div className="shell footer-top">
+        <div className="footer-newsletter-compact">
+          <div>
+            <p>Taking Flight newsletter</p>
+            <span>Patient stories, releases, events, and ways to help.</span>
+          </div>
+          <NewsletterFooterForm />
+        </div>
         <div className="footer-brand">
           <Link href="/" aria-label="REGI home">
             <Image
@@ -50,7 +46,8 @@ export function SiteFooter() {
           <Link href="/staff">Meet the staff</Link>
           <Link href="/board">Our board</Link>
           <Link href="/education">Education programs</Link>
-          <Link href="/visit">Raptor tours</Link>
+          <Link href="/visit">Visit REGI &amp; Raptor Tours</Link>
+          <Link href="/summer-camp">Raptor Adventures Summer Camp</Link>
           <Link href="/newsletter">Taking Flight newsletter</Link>
         </div>
         <div>

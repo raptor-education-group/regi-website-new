@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { mailto, siteConfig } from "../lib/site-config";
+import Link from "next/link";
+import { directionsUrl, mailto, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
   title: "Visit REGI",
@@ -8,24 +9,27 @@ export const metadata: Metadata = {
   openGraph: { title: "Visit REGI" },
   twitter: { title: "Visit REGI" },
   description:
-    "Plan a seasonal Raptor Tour or Raptor Adventures Summer Camp experience at REGI in Antigo, Wisconsin.",
+    "Plan a seasonal Raptor Tour at REGI, review visitor information, or explore Raptor Adventures Summer Camp in Antigo, Wisconsin.",
 };
 
 export default function VisitPage() {
-  const { tourBooking, campRegistration, campThemes } = siteConfig.external;
+  const { tourBooking } = siteConfig.external;
 
   return (
     <main id="main-content">
       <section className="inner-hero visit-hero">
         <div className="inner-hero-copy">
           <p className="eyebrow">Visit REGI</p>
-          <h1>Come closer to Wisconsin&apos;s wild side.</h1>
+          <h1>A wild Wisconsin experience—with a guide.</h1>
           <p>
-            Seasonal outdoor tours and youth camps invite you onto the REGI
-            grounds to meet avian ambassadors, explore nature, and discover the
-            stories behind the feathers.
+            REGI welcomes registered guests for seasonal Raptor Tours and
+            special education experiences. Because this is an active wildlife
+            hospital, the grounds are not open for self-guided visits.
           </p>
-          <a className="button" href="#raptor-tours">Plan your visit <span>↓</span></a>
+          <div className="visit-hero-actions">
+            <a className="button" href="#raptor-tours">Explore Raptor Tours <span>↓</span></a>
+            <Link className="text-link" href="/summer-camp">Explore Summer Camp</Link>
+          </div>
         </div>
         <div className="inner-hero-image">
           <Image
@@ -38,96 +42,122 @@ export default function VisitPage() {
         </div>
       </section>
 
-      <section className="section tour-section" id="raptor-tours">
-        <div className="shell page-intro-grid">
+      <section className="visit-ground-rules" aria-label="Important visitor information">
+        <div className="shell visit-ground-rules-grid">
+          <p><span>01</span><strong>Register before arriving</strong>Walk-in and self-guided visits are not available.</p>
+          <p><span>02</span><strong>Plan for the outdoors</strong>Tours take place outside and are weather dependent.</p>
+          <p><span>03</span><strong>Protect the birds</strong>Leave pets at home and follow your educator&apos;s directions.</p>
+        </div>
+      </section>
+
+      <section className="section visit-tour-section" id="raptor-tours">
+        <div className="shell visit-tour-intro">
           <div>
             <p className="eyebrow">June · July · August</p>
-            <h2>Raptor Tours</h2>
+            <h2>Seasonal Raptor Tours</h2>
           </div>
           <div>
             <p className="page-lead">
-              Follow REGI educators to stations across the property and meet a
-              changing cast of hawks, owls, falcons, crows, vultures, and
-              waterfowl up close.
+              Meet a changing cast of avian ambassadors while a REGI educator
+              shares their stories, adaptations, and role in Wisconsin&apos;s wild
+              communities.
             </p>
             <p>
-              Tours last about 50 minutes to one hour and take place entirely
-              outdoors. Rehabilitation patients and clinic enclosures remain
+              Tours last approximately 50–60 minutes and move between outdoor
+              stations. Rehabilitation patients and clinic enclosures remain
               private under REGI&apos;s federal permits.
             </p>
           </div>
         </div>
-        <div className="shell visit-info-grid">
-          <article><span>Length</span><strong>50–60 minutes</strong><p>Guided, outdoors, and paced for conversation.</p></article>
+
+        <div className="shell visit-tour-details">
+          <article><span>Length</span><strong>50–60 minutes</strong><p>Guided, outdoors, and paced for questions.</p></article>
           <article><span>Admission</span><strong>$12 adult · $8 child</strong><p>Child admission applies to ages 12 and under.</p></article>
-          <article><span>Arrival</span><strong>Welcome &amp; Nature Center</strong><p>Check in and pay before your scheduled tour.</p></article>
-          <article><span>Registration</span><strong>Required in advance</strong><p>Call for assistance or groups larger than ten.</p></article>
+          <article><span>Check in</span><strong>Welcome &amp; Nature Center</strong><p>Arrive before your scheduled start time to check in and pay.</p></article>
+          <article><span>Registration</span><strong>Required in advance</strong><p>Contact education for assistance or groups larger than ten.</p></article>
         </div>
-        <div className="shell visit-notice">
-          <p><strong>Dress for the weather.</strong> Tours are outdoors and subject to conditions.</p>
-          <p><strong>Please leave pets at home.</strong> Dogs are not allowed on REGI property.</p>
-          <div className="visit-action-row">
-            {tourBooking ? <a className="button" href={tourBooking}>Register for a tour <span aria-hidden="true">↗</span></a> : null}
-            <a className={tourBooking ? "text-link" : "button"} href={siteConfig.education.phoneHref}>Call {siteConfig.education.phone}</a>
+
+        <div className="shell visit-tour-action">
+          <div>
+            <p className="eyebrow">Reserve your place</p>
+            <h3>Choose a scheduled tour before making the drive.</h3>
+          </div>
+          <div>
+            {tourBooking ? (
+              <a className="button" href={tourBooking}>View available tours <span aria-hidden="true">↗</span></a>
+            ) : (
+              <a className="button" href={siteConfig.education.phoneHref}>Call {siteConfig.education.phone}</a>
+            )}
+            <p>For groups larger than ten or registration assistance, contact the education office.</p>
           </div>
         </div>
       </section>
 
-      <section className="section october-section">
-        <div className="shell october-grid">
-          <div className="october-image">
-            <Image src="/images/foster-owl.jpg" alt="Great horned owls at REGI" fill sizes="(max-width: 800px) 100vw, 50vw" />
-          </div>
-          <div>
-            <p className="eyebrow eyebrow-light">October only</p>
-            <h2>Owl-O-Ween Tours</h2>
-            <p className="page-lead">
-              Celebrate fall, REGI-style—with pumpkin painting, warm cider,
-              cocoa, and a closer look at the folklore, myths, and legends
-              surrounding owls, crows, and vultures.
-            </p>
-            <p>$12 per adult · $8 per child age 12 and under. Pumpkins are available for $5, or bring your own.</p>
-          </div>
+      <section className="section visit-experiences-section">
+        <div className="shell visit-experiences-heading">
+          <p className="eyebrow eyebrow-light">More ways to visit</p>
+          <h2>Seasonal experiences for curious minds.</h2>
+        </div>
+        <div className="shell visit-experience-grid">
+          <article id="owl-o-ween">
+            <div className="visit-experience-image">
+              <Image src="/images/foster-owl.jpg" alt="Great horned owls at REGI" fill sizes="(max-width: 760px) 100vw, 50vw" />
+            </div>
+            <div>
+              <p className="eyebrow eyebrow-light">October only</p>
+              <h3>Owl-O-Ween Tours</h3>
+              <p>
+                Celebrate fall with owl, crow, and vulture folklore alongside
+                warm cider, cocoa, and optional pumpkin painting.
+              </p>
+              <p className="visit-experience-price">$12 adult · $8 child age 12 and under</p>
+            </div>
+          </article>
+          <article>
+            <div className="visit-experience-image">
+              <Image src="/images/summer-camp.jpg" alt="A group of REGI Raptor Adventures campers" fill sizes="(max-width: 760px) 100vw, 50vw" />
+            </div>
+            <div>
+              <p className="eyebrow eyebrow-light">Raptor Adventures</p>
+              <h3>Summer Camp</h3>
+              <p>
+                Weeklong youth sessions combine live birds, nature study,
+                games, art, exploration, and time outside.
+              </p>
+              <Link className="text-link text-link-light" href="/summer-camp">Camp dates, ages &amp; details <span>→</span></Link>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="section camp-section" id="summer-camp">
-        <div className="shell camp-heading">
+      <section className="section visit-planning-section">
+        <div className="shell visit-planning-grid">
           <div>
-            <p className="eyebrow">Raptor Adventures</p>
-            <h2>Summer camp gets kids outside—and looking closer.</h2>
+            <p className="eyebrow">Before you arrive</p>
+            <h2>A little planning keeps the day focused on the birds.</h2>
           </div>
-          <p>
-            Live birds of prey, nature exploration, group games, wildlife
-            study, art, and unhurried outdoor play help young people build a
-            lasting relationship with the natural world.
-          </p>
-        </div>
-        <div className="shell camp-session-grid">
-          <article><span>Session 01</span><h3>Ages 7–9</h3><p>July 13–17, 2026</p></article>
-          <article><span>Session 02</span><h3>Ages 10–13</h3><p>August 3–7, 2026</p></article>
-          <div className="camp-scholarship"><strong>Scholarships are available.</strong><p>Call the education office to learn more or request a registration form.</p></div>
-        </div>
-        {(campRegistration || campThemes) ? (
-          <div className="shell camp-action-row" aria-label="Summer camp downloads">
-            {campRegistration ? <a className="button" href={campRegistration}>Registration form <span aria-hidden="true">↗</span></a> : null}
-            {campThemes ? <a className="text-link" href={campThemes}>Explore 2026 camp themes <span aria-hidden="true">↗</span></a> : null}
+          <div className="visit-planning-list">
+            <div><span>Weather</span><p>Dress for current conditions and comfortable outdoor walking.</p></div>
+            <div><span>Animals</span><p>Pets, including dogs, are not allowed on REGI property.</p></div>
+            <div><span>Clinic privacy</span><p>Wild patients and rehabilitation areas are never part of public tours.</p></div>
+            <div><span>Accessibility</span><p>Contact education before your visit to discuss mobility or accommodation needs.</p></div>
+            <div><span>Location</span><p>{siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode}</p></div>
           </div>
-        ) : null}
-        <div className="shell camp-gallery">
-          <figure><Image src="/images/summer-camp.jpg" alt="A group of REGI summer campers" fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>
-          <figure><Image src="/images/camp-exploration.jpg" alt="REGI campers exploring wildlife and nature" fill sizes="(max-width: 800px) 100vw, 50vw" /></figure>
+        </div>
+        <div className="shell visit-planning-actions">
+          <a className="button" href={directionsUrl}>Open Google Maps <span aria-hidden="true">↗</span></a>
+          <Link className="text-link" href="/contact#contact-inquiry">Ask a non-scheduling question</Link>
         </div>
       </section>
 
       <section className="page-cta">
         <div className="shell page-cta-grid">
-          <p className="eyebrow eyebrow-light">Ready for an adventure?</p>
-          <h2>Make REGI part of your Wisconsin summer.</h2>
+          <p className="eyebrow eyebrow-light">Need help planning?</p>
+          <h2>Make REGI part of your Wisconsin adventure.</h2>
           <div>
             <a className="button button-cream" href={siteConfig.education.phoneHref}>Call the education office</a>
-            <a className="text-link text-link-light" href={mailto(siteConfig.education.email, "Tour or summer camp inquiry")}>Email the education team</a>
-            <p>For tour registration, camp details, or groups larger than ten.</p>
+            <a className="text-link text-link-light" href={mailto(siteConfig.education.email, "REGI visit inquiry")}>Email education</a>
+            <p>For registration assistance, accommodations, or groups larger than ten.</p>
           </div>
         </div>
       </section>

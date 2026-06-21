@@ -94,14 +94,27 @@ try {
   if (!contents.get("/careers").includes("internship-application")) {
     throw new Error("Internship application form is missing");
   }
-  if (!home.includes("data-newsletter-open")) {
-    throw new Error("Persistent newsletter trigger is missing");
+  if (!contents.get("/contact").includes('id="contact-inquiry"')) {
+    throw new Error("Contact inquiry form is missing");
+  }
+  if (!contents.get("/contact").includes("3–5 business days")) {
+    throw new Error("Contact response-time guidance is missing");
+  }
+  if (!contents.get("/visit").includes("Seasonal Raptor Tours")) {
+    throw new Error("Visit planning content is missing");
+  }
+  if (!contents.get("/summer-camp").includes("2026 camp weeks")) {
+    throw new Error("Summer Camp page is missing");
+  }
+  if (!home.includes('id="footer-newsletter-email"')) {
+    throw new Error("Footer newsletter signup is missing");
   }
 
   const redirects = [
     ["/what-to-do-if-you-find-a-baby-bird", "/rescue/baby-birds"],
     ["/aabjasper", "/ambassadors#bird-jasper"],
     ["/raptor-tours", "/visit#raptor-tours"],
+    ["/camp", "/summer-camp"],
   ];
   for (const [source, destination] of redirects) {
     const response = await fetch(`${origin}${source}`, { redirect: "manual" });

@@ -43,7 +43,7 @@ const programCards = [
     detail: "Ages 7–13 · Scholarships available",
     image: "/images/summer-camp.jpg",
     alt: "Children and educators at REGI Raptor Adventures Summer Camp",
-    href: "/visit#summer-camp",
+    href: "/summer-camp",
     label: "See camp details",
   },
 ];

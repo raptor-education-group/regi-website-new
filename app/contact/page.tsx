@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactInquiryForm } from "../components/contact-inquiry-form";
 import { directionsUrl, siteConfig } from "../lib/site-config";
 
 export const metadata: Metadata = {
@@ -56,32 +57,30 @@ export default function ContactPage() {
             <span>02 · Plan a visit</span>
             <h2>Education &amp; tours</h2>
             <p>
-              Call for Raptor Tours, programs, summer camp, group visits, or
-              other education questions. REGI is not generally open for
-              self-guided public visits.
+              Use the Visit page for tour information and scheduling. For
+              other education questions, submit the contact form below and
+              allow 3–5 business days for a response before calling.
             </p>
-            <a className="contact-number" href={siteConfig.education.phoneHref}>{siteConfig.education.phone}</a>
-            <a
-              className="text-link"
-              href={`mailto:${siteConfig.education.email}`}
-            >
-              Email education <span>→</span>
-            </a>
+            <Link className="contact-card-action" href="/visit">Visit &amp; booking information</Link>
+            <Link className="text-link" href="#contact-inquiry">Ask an education question <span>→</span></Link>
           </article>
           <article className="contact-route">
             <span>03 · Patient status</span>
             <h2>Request an update</h2>
             <p>
-              Include the bird&apos;s species, where it was found, and the date it
-              arrived. The small clinic team responds as patient care allows.
+              Use the form below so staff receive the species, rescue location,
+              admission date, and finder information needed to identify the
+              correct patient.
             </p>
-            <a
-              className="contact-email"
-              href={`mailto:${siteConfig.email.updates}`}
-            >
-              {siteConfig.email.updates}
-            </a>
+            <Link className="contact-card-action" href="#contact-inquiry">Patient update form</Link>
+            <p className="contact-card-wait">Please allow 3–5 business days before calling.</p>
           </article>
+        </div>
+      </section>
+
+      <section className="section contact-inquiry-section" id="contact-inquiry">
+        <div className="shell">
+          <ContactInquiryForm />
         </div>
       </section>
 

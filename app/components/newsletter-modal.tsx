@@ -34,7 +34,14 @@ export function NewsletterModal() {
       openModal(trigger);
     }
 
+    function handleSignupRequest(event: Event) {
+      const detail = (event as CustomEvent<{ email?: string; opener?: HTMLElement | null }>).detail;
+      if (detail?.email) setEmail(detail.email);
+      openModal(detail?.opener);
+    }
+
     document.addEventListener("click", handleTrigger);
+    document.addEventListener("regi:newsletter-open", handleSignupRequest);
 
     const dismissedAt = Number(localStorage.getItem(DISMISSED_KEY) || 0);
     const shouldPrompt = !dismissedAt || Date.now() - dismissedAt > THIRTY_DAYS;
@@ -50,6 +57,7 @@ export function NewsletterModal() {
 
     return () => {
       document.removeEventListener("click", handleTrigger);
+      document.removeEventListener("regi:newsletter-open", handleSignupRequest);
       if (timer) window.clearTimeout(timer);
     };
   }, [openModal]);
